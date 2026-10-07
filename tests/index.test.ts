@@ -1,0 +1,39 @@
+import { describeTablePlugin } from './table-plugin-suite.ts'
+import { Config } from '../src/config.ts'
+import { parseMaterial, runCheck, SPEC } from '../src/model.ts'
+import { buildView } from '../src/view.ts'
+import { inject, name, resolvePackageFile, TOOL_NAME } from '../src/index.ts'
+
+describeTablePlugin({
+  name,
+  inject,
+  TOOL_NAME,
+  resolvePackageFile,
+  Config,
+  rulesFile: 'rules/hs-classify.yaml',
+  parseMaterial,
+  runCheck,
+  buildView,
+  columnNames: SPEC.columns,
+  samples: {
+    good: {
+          "declarant": "某某报关行",
+          "tariffVersion": "2026 年版税则",
+          "rows": [
+                {
+                      "序号": "1",
+                      "品名": "便携式自动数据处理设备",
+                      "材质": "塑料外壳、金属结构件、电子元器件",
+                      "功能": "数据处理与显示，重量 1.2 千克",
+                      "章": "84",
+                      "品目": "8471",
+                      "子目": "847130",
+                      "商品编号": "8471300000",
+                      "申报日期": "2026-03-10",
+                      "归类依据": "税则第八十四章章注及品目 8471 条文"
+                }
+          ]
+    },
+    unknownColumn: { rows: [{ 备注: '甲' }] },
+  },
+})

@@ -1,0 +1,169 @@
+# 商品归类层级一致性核对 规则库
+#
+# 规则数据与代码分离：替换本文件即可切换规则集版本，无需改动 TypeScript。
+#
+# 条款引用纪律（由 shared/ruleset.ts 强制校验）：
+#   - 每条规则必须写全 document / number / clause / excerpt / kind / source，
+#     且 excerpt 必须是逐字摘录，不得改写。
+#   - kind: direct                       条款直接规定了所检查的要求
+#   - kind: derived-from-principle       条款未直接规定，仅能由原则性条款推论（severity 最多 warn）
+#   - kind: institutional-configuration 阈值出自本机构配置（severity 最多 info）
+#
+# ⚠️⚠️ 本规则库最重要的说明：**它核对的是"编号的层级结构"，不是"归类是否正确"。**
+#   本插件核对的是"商品归类台账"中编号的自洽：
+#     商品编号位数是否正确、章／品目／子目是否为商品编号的逐级前缀、层级是否由粗到细、
+#     归类依据是否填写、项号是否重复、品名是否残留占位符。
+#   其规范载体是**《中华人民共和国进出口税则》**（商品编码为十位，前六位为世界海关组织
+#   《商品名称及编码协调制度》的国际统一编码）与**《进出口关税条例》**关于归类的规定。
+#   **核查未取得这些文件的逐字条文**，故每条 excerpt 如实写明，kind 降为 derived-from-principle（封顶 warn）。
+#
+# ✅ 效力与版本（2026-10-07 核实，见 rules/evidence/clause-verification-tariff.md）：
+#   **《中华人民共和国进出口关税条例》**（**国务院令第 392 号**，2003-11-23 公布；
+#   经 2011-01-08、2013-12-07、2016-02-06 三次修订；**自 2004-01-01 施行**，
+#   同时废止 1992 年的同名条例）**第三十一条**逐字规定：
+#   「纳税义务人应当按照《税则》规定的**目录条文和归类总规则、类注、章注、子目注释**
+#   以及其他归类注释，对其申报的进出口货物进行**商品归类**，并归入相应的**税则号列**。」
+#   ⇒ 这是**商品归类的法定依据**（属 B 类，有强制力）。**但本插件不因此升级严重级**：
+#     它核对的是"编号的层级结构是否自洽"，**不是"归类是否正确"**，故 `HC-003` 仍为 warn。
+#   ⚠️ **《进出口税则》与《协调制度》的版本本次未取得** —— 税则**逐年调整**，
+#     故 `HC-001`／`HC-002`／`HC-004` 保持描述性标签，**不断言任何年度版本**。
+
+# ⚠️⚠️ 另一条**必须保留**的边界：**本插件绝不判定商品应当归入哪个编号**。
+#   归类是海关与归类专业人员的实质判断，取决于商品的材质、功能、
+#   加工深度与税则注释、归类决定。**本插件不查税则、不查归类决定、不查预裁定**。
+#   → 它只能发现"这一行的编号与它自己写的章／品目／子目对不上"，
+#     **发现不了"这一行的编号与商品本身不匹配"** —— 后者需要人查税则。
+#   → **税则版本（tariffVersion）由使用方在表头声明**，因为编码随年度税则调整。
+
+plugin: dsh-hs-classify
+version: "2026.1"
+
+rules:
+  - id: HC-001
+    title: 商品编号应为十位数字
+    severity: warn
+    basis:
+      document: 《中华人民共和国进出口税则》
+      number: 现行版本本次未核实
+      clause: 关于商品编码位数的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.gov.cn/
+    params:
+        check:
+          kind: pattern
+          field: hsCode
+          pattern: ^[0-9]{10}$
+          fix: 商品编号应写成十位数字；位数随年度税则调整
+    note: >-
+      我国进出口税则的商品编码为**十位数字**（前六位为国际统一的《协调制度》编码）。
+      本次未取得明文条号，故封顶 warn。
+      本条**只核对位数与字符合法性**，**绝不判断归类是否正确**。
+      若年度税则调整了位数，改 pattern 即可，无需改代码。
+
+  - id: HC-002
+    title: 章、品目、子目应为商品编号的逐级前缀
+    severity: warn
+    basis:
+      document: 《商品名称及编码协调制度》
+      number: 现行版本本次未核实
+      clause: 关于编码层级结构的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: http://www.wcoomd.org/ （《协调制度》为世界海关组织出版物；此为其发布机构首页，无公开正文可链接）
+    params:
+        check:
+          kind: prefixOf
+          field: hsCode
+          components: ["chapter","heading","subheading"]
+          digits: 10
+          fix: 章为前 2 位、品目为前 4 位、子目为前 6 位；核对层级填写
+    note: >-
+      编码的层级关系是**结构性的**：章是前两位、品目是前四位、子目是前六位，
+      后一级必须是前一级的延伸。层级对不上，这个编号在任何系统里都查不到。
+      本次未取得明文条号，故封顶 warn。
+      ⚠️ 本条**只核对前缀关系与位数递增**，
+      **不判断该编号是否适用于该商品** —— 那需要查税则与归类决定，是海关与归类人员的判断。
+
+  - id: HC-003
+    title: 每条归类都应填写归类依据
+    severity: warn
+    basis:
+      document: 《中华人民共和国进出口关税条例》
+      number: 现行版本与条号本次未核实
+      clause: 第三十一条（应当按照《税则》规定的目录条文和归类总规则、类注、章注、子目注释以及其他归类注释，对其申报的进出口货物进行商品归类，并归入相应的税则号列）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.gov.cn/
+    params:
+        check:
+          kind: presence
+          field: basis
+          fix: 补填归类依据；本条只核对是否填写，不判断依据是否成立
+    note: >-
+      归类依据（税则条文、章注、归类决定或预裁定）是**归类结论可复核的前提**：
+      没有依据的编号只是一个人的判断。本次未取得明文条号，故封顶 warn。
+      ⚠️ 本条只核对依据栏是否填写，**不核对所引依据是否存在、是否支持该归类** ——
+      本插件不查税则、不查归类决定。
+
+  - id: HC-004
+    title: 台账应声明商品编码适用的税则版本
+    severity: warn
+    basis:
+      document: 《中华人民共和国进出口税则》
+      number: 现行版本本次未核实
+      clause: 关于税则版本的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.gov.cn/
+    params:
+        check:
+          kind: headerPresence
+          fields: ["tariffVersion"]
+    note: >-
+      商品编码随**年度税则**调整：去年的十位编码今年可能已被拆分或合并。
+      台账不声明适用版本，就无法判断这些编号属于哪一版税则。本次未取得明文条号，故封顶 warn。
+      配置项 tariffVersion 对应材料表头的税则版本。
+      若本机构表式还在表头记录申报人，把 declarant 加进 fields 即可。
+
+  - id: HC-005
+    title: 项号不应在台账内重复
+    severity: warn
+    basis:
+      document: 《中华人民共和国进出口税则》
+      number: 现行版本本次未核实
+      clause: 关于商品项号的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.gov.cn/
+    params:
+        check:
+          kind: unique
+          field: itemNo
+    note: >-
+      项号唯一是"每个商品项只被登记一次"的**前提条件**：项号重复会让报关单与台账无法对应。
+      本次未取得明文条号，故封顶 warn。比较时忽略空白字符。
+      注意：同一商品分多行申报（例如不同规格）时，应使用不同的项号。
+
+  - id: HC-006
+    title: 品名栏不应残留未替换的占位符
+    severity: warn
+    basis:
+      document: 《中华人民共和国进出口税则》
+      number: 现行版本本次未核实
+      clause: 关于商品名称申报的条款（本次未取得条号）
+      excerpt: 该条文本次未取得：核查未获得该文件的逐字原文，本规则库不伪造引文。
+      kind: derived-from-principle
+      source: https://www.gov.cn/
+    params:
+        check:
+          kind: containsAny
+          field: description
+          terms: ["【","】","{{","}}","XXX","xxx","待填","待补充","TBD","todo","示例"]
+          fix: 品名应填写实际商品名称；残留占位符说明台账是照模板抄的
+    note: >-
+      台账若直接照抄模板，品名栏留下【】、XXX、待填、TBD 之类占位符时，
+      会让人误以为已经确定了归类对象 —— **而没有品名的归类是没有意义的**。
+      本次未取得明文条号，故封顶 warn。terms 可按本机构模板调整。
+
+disabled: []
