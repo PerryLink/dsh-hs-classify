@@ -43,8 +43,7 @@ be classified under.
 ## Install
 
 ```sh
-pnpm pack
-dsh plugin --profile <name> add ./*.tgz
+dsh plugin --profile <name> add dsh-hs-classify
 dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
 ```
 
