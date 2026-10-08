@@ -66,11 +66,10 @@ item — applies a versioned rule pack, and returns a report.
 |---|---|---|---|
 | `HC-001` | the commodity code is ten digits | warn | principle |
 | `HC-002` | chapter, heading and subheading are successive prefixes | warn | principle |
-| `HC-003` | a classification basis is recorded | warn | principle |
+| `HC-003` | a classification basis is recorded | warn | direct |
 | `HC-004` | the tariff version is declared | warn | principle |
 | `HC-005` | item numbers are unique | warn | principle |
 | `HC-006` | the description holds no unreplaced placeholder | warn | principle |
-
 ## Install
 
 ```sh
