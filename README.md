@@ -1,4 +1,25 @@
-# dsh-hs-classify
+# dsh-hs-classify — Commodity classification register hierarchy consistency check
+
+`dsh-hs-classify` reads one classification register — the declarant header plus one row per item — and checks the structure of the numbers it records: that a commodity code is ten digits, that its chapter, heading and subheading are successive prefixes of the code, that the levels get progressively finer, that each row records a classification basis, that the header declares the tariff version the codes belong to, that item numbers are unique within the register, and that no unreplaced placeholder survives in the item name.
+
+## What it answers
+
+| You ask | What it answers |
+|---|---|
+| Some codes in our register are eight digits, and one ends with a letter. Will the check report them? | Yes. `HC-001` matches every filled `hsCode` against the pack's `pattern`, `^[0-9]{10}$`, and reports the row together with the value it read. It checks the digit count and the characters only, never whether the goods belong under that code. A blank code cell is passed over, so what it reports is a code of the wrong shape, not a code that is missing. The ten digits are a pack setting: when the annual tariff changes the length, edit the `pattern`, not the code. |
+| A row's 章, 品目 and 子目 do not agree with its 商品编号. Is that caught? | Yes. `HC-002` reads the level columns in coarse-to-fine order — 章, 品目, 子目, two, four and six digits in the pack's own example — and reports the level that is not a prefix of the `hsCode` it read, or that is not finer than the level above it. It checks that prefix relation and that order only: whether the code fits the goods is a customs determination needing the tariff and the classification decisions, which this plugin does not consult. A level cell left blank is not compared. |
+| One row leaves 归类依据 blank. | `HC-003` reports that row: `basis` has to be filled in on every row that carries the column. It checks that something is written there, not that the tariff clause, chapter note, classification decision or advance ruling cited exists or supports the classification — this plugin consults none of them. If the register has no `basis` column at all, `HC-003` is listed in `skipped` with the reason that the material has no such column, instead of passing silently. |
+| The header does not say which tariff version the codes belong to. | `HC-004` requires the header to declare `tariffVersion` and reports the register when the header leaves it empty. It checks that the declaration is present, not that the edition named is the one these codes come from: the rule does not read the codes, and codes are split and merged between editions. Its `fields` list is a pack setting — add `declarant` if your header records one. |
+| 项号 5 appears on two rows. | `HC-005` reports the later row as a duplicate of the earlier one, because `itemNo` has to be unique within one register; whitespace is ignored in the comparison, so `5` and ` 5 ` count as the same item number. It checks uniqueness only. One goods item declared on several rows, for different specifications say, needs a different item number on each row. Item numbers that are all distinct still leave `HC-005` in `skipped`: it is then listed with the reason that the material met the check's preconditions and no differing entries were found — a different reason from the one a rule gives when it could not run because the column is absent. |
+| The 品名 column still holds 【】 or 待填 from the template. | `HC-006` reports the row and the placeholder it matched. The pack looks for 【, 】, {{, }}, XXX, xxx, 待填, 待补充, TBD, todo and 示例, and `terms` can be trimmed to your own template. It finds unreplaced placeholders only: it does not judge whether the name is right, and it does not require the column to be filled — a blank `description` cell draws no finding from it, and no other rule in this pack requires one. |
+
+## Standards it follows
+
+| Document | Number | Cited by rules |
+|---|---|---|
+| 《中华人民共和国进出口税则》 | 现行版本本次未核实 | HC-001, HC-004, HC-005, HC-006 |
+| 《商品名称及编码协调制度》 | 现行版本本次未核实 | HC-002 |
+| 《中华人民共和国进出口关税条例》 | 国务院令第392号（2003年11月23日公布；根据2011年1月8日、2013年12月7日、2016年2月6日三次《国务院关于修改（废止）部分行政法规的决定》修订） | HC-003 |
 
 **Boundary:** this plugin checks a **商品归类台账** for the *structure* of the numbers it records — that a
 commodity code is ten digits, that its chapter, heading and subheading are successive prefixes of it, that the

@@ -1,4 +1,25 @@
-# dsh-hs-classify
+# dsh-hs-classify — Verificação da coerência hierárquica do registo de classificação de mercadorias
+
+`dsh-hs-classify` lê um registo de classificação de mercadorias —o cabeçalho do declarante mais uma linha por item— e verifica a estrutura dos números que regista: se o código de mercadoria tem dez dígitos, se o capítulo, a posição e a subposição são prefixos sucessivos desse código, se os níveis vão do mais geral para o mais específico, se cada linha regista um fundamento de classificação, se o cabeçalho declara a versão da pauta a que os códigos pertencem, se os números de item são únicos no registo e se não resta nenhum marcador de modelo por substituir na designação.
+
+## O que ele responde
+
+| Você pergunta | O que ele responde |
+|---|---|
+| Alguns códigos do registo têm oito dígitos e um termina numa letra. Isso é reportado? | Sim. `HC-001` compara cada `hsCode` preenchido com o `pattern` do pacote de regras, `^[0-9]{10}$`, e reporta a linha com o valor que leu. Verifica apenas o número de dígitos e os caracteres, nunca se a mercadoria pertence a esse código. Uma célula de código em branco é ignorada: o que ele reporta é um código com a forma errada, não um código em falta. Os dez dígitos são uma definição do pacote de regras: quando a pauta anual mudar o comprimento, edita-se o `pattern`, não o código. |
+| O 章, o 品目 e o 子目 de uma linha não concordam com o seu 商品编号. Isso é detetado? | Sim. `HC-002` lê as colunas de nível do mais geral para o mais específico — 章, 品目 e 子目, dois, quatro e seis dígitos no exemplo do próprio pacote de regras — e assinala o nível que não é prefixo do `hsCode` lido, ou que não é mais fino do que o nível anterior. Verifica apenas essa relação de prefixo e essa ordem: se o código corresponde à mercadoria é uma determinação aduaneira que exige a pauta e as decisões de classificação, que este plugin não consulta. Uma célula de nível em branco não é comparada. |
+| Uma linha deixa a 归类依据 vazia. | `HC-003` reporta essa linha: `basis` tem de estar preenchido em todas as linhas que trazem a coluna. Verifica que algo esteja escrito, não que a disposição pautal, a nota de capítulo, a decisão de classificação ou a informação pautal vinculativa citadas existam ou sustentem a classificação — este plugin não consulta nada disso. Se o registo não tiver coluna `basis`, `HC-003` aparece em `skipped` a indicar que o material não tem essa coluna, em vez de passar em silêncio. |
+| O cabeçalho não diz a que versão da pauta pertencem os códigos. | `HC-004` exige que o cabeçalho declare `tariffVersion` e reporta o registo quando o deixa vazio. Verifica que a declaração exista, não que a edição indicada seja a destes códigos: a regra não lê os códigos, e os códigos são divididos e fundidos entre edições. A sua lista `fields` é uma definição do pacote de regras: acrescente `declarant` se o seu cabeçalho o registar. |
+| O 项号 5 aparece em duas linhas. | `HC-005` reporta a linha posterior como duplicada da anterior, porque `itemNo` tem de ser único dentro do mesmo registo; a comparação ignora espaços, por isso `5` e ` 5 ` são o mesmo número de item. Verifica apenas a unicidade. Uma mercadoria declarada em várias linhas, por especificações diferentes, precisa de um número de item diferente em cada uma. Mesmo sem números repetidos, `HC-005` continua a aparecer em `skipped`: aí com o motivo de que o material cumpre as precondições da verificação e não foram encontradas entradas divergentes, um motivo diferente do que é dado quando a regra não pode ser executada por faltar a coluna. |
+| A coluna 品名 ainda tem 【】 ou 待填 do modelo. | `HC-006` reporta a linha e o marcador que encontrou. O pacote de regras procura 【, 】, {{, }}, XXX, xxx, 待填, 待补充, TBD, todo e 示例, e `terms` pode ser ajustado ao seu próprio modelo. Procura apenas marcadores não substituídos: não julga se o nome está correto e também não exige que a coluna esteja preenchida — uma célula `description` vazia não lhe produz qualquer achado, e nenhuma outra regra deste pacote a exige. |
+
+## Normas que segue
+
+| Documento | Número | Regras que o citam |
+|---|---|---|
+| 《中华人民共和国进出口税则》 | 现行版本本次未核实 | HC-001, HC-004, HC-005, HC-006 |
+| 《商品名称及编码协调制度》 | 现行版本本次未核实 | HC-002 |
+| 《中华人民共和国进出口关税条例》 | 国务院令第392号（2003年11月23日公布；根据2011年1月8日、2013年12月7日、2016年2月6日三次《国务院关于修改（废止）部分行政法规的决定》修订） | HC-003 |
 
 **Boundary:** this plugin checks a **商品归类台账** for the *structure* of the numbers it records — that a
 commodity code is ten digits, that its chapter, heading and subheading are successive prefixes of it, that the
