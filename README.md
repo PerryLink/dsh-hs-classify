@@ -40,11 +40,10 @@ be classified under.
 > A register with a structurally perfect code for the wrong goods passes this plugin. That is the documented
 > limit, stated in the header, in `HC-002`'s note, and in the troubleshooting section.
 >
-> **Every `excerpt` in the rule pack says, in so many words, that the clause text was not obtained.** The
+> **The rule pack states its citation status rule by rule.** **1 of its 6 rules quote verbatim clause text** and are marked `direct`; the remaining 5 state in the `excerpt` field itself that the text was not obtained, and stay at `warn` or `info`. Where a rule still carries that note, treat it as a lead rather than as a citation. The
 > regime lives in 《中华人民共和国进出口税则》— whose codes are ten digits, the first six being the WCO
-> Harmonized System — and 《中华人民共和国进出口关税条例》. The verification pass could not retrieve
-> verbatim clause text, so the pack states the gap in the `excerpt` field itself and keeps every rule at
-> `warn` or `info`. **When the texts are in hand, replace each `excerpt` with the real clause and raise `kind`
+> Harmonized System — and 《中华人民共和国进出口关税条例》. For the rules whose text the verification pass could not retrieve, the pack states the gap in the
+> `excerpt` field itself rather than paraphrasing it, and those rules stay at `warn` or `info`. **When the texts are in hand, replace each `excerpt` with the real clause and raise `kind`
 > to `direct`.** The ten-digit assumption is a `pattern` in the rule pack, so an annual tariff change needs a
 > rule-pack edit, not a code change.
 

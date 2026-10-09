@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.4
+
+- Correct the citation-status sentence in the standard-scope note, which still
+  said every excerpt admitted the clause text was not obtained after a batch
+  of rules had been given verbatim text and marked `direct`.
+
 ## 0.2.3
 
 - Correct the severity and basis-kind cells in `## What it does` so they
