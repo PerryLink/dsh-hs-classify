@@ -4,6 +4,13 @@
 
 `dsh-hs-classify` reads one classification register — the declarant header plus one row per item — and checks the structure of the numbers it records: that a commodity code is ten digits, that its chapter, heading and subheading are successive prefixes of the code, that the levels get progressively finer, that each row records a classification basis, that the header declares the tariff version the codes belong to, that item numbers are unique within the register, and that no unreplaced placeholder survives in the item name.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-hs-classify
+dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
+```
+
 ## What it looks like
 
 ![Terminal demo of dsh-hs-classify: real output over its HC-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hs-classify/main/docs/assets/dsh-hs-classify-hero.png)
@@ -79,13 +86,6 @@ item — applies a versioned rule pack, and returns a report.
 | `HC-004` | the tariff version is declared | warn | principle |
 | `HC-005` | item numbers are unique | warn | principle |
 | `HC-006` | the description holds no unreplaced placeholder | warn | principle |
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-hs-classify
-dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
-```
-
 ## Configuration
 
 | Key | Type | Default | Description |

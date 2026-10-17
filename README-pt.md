@@ -4,6 +4,13 @@
 
 `dsh-hs-classify` lê um registo de classificação de mercadorias —o cabeçalho do declarante mais uma linha por item— e verifica a estrutura dos números que regista: se o código de mercadoria tem dez dígitos, se o capítulo, a posição e a subposição são prefixos sucessivos desse código, se os níveis vão do mais geral para o mais específico, se cada linha regista um fundamento de classificação, se o cabeçalho declara a versão da pauta a que os códigos pertencem, se os números de item são únicos no registo e se não resta nenhum marcador de modelo por substituir na designação.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-hs-classify
+dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
+```
+
 ## Como é a saída
 
 ![Terminal demo of dsh-hs-classify: real output over its HC-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hs-classify/main/docs/assets/dsh-hs-classify-hero.png)
@@ -70,13 +77,6 @@ be classified under.
 ## What it does
 
 A tabela de regras, os campos e o comportamento detalhado estão em [README.md](README.md#what-it-does) (versão principal em inglês). O plugin apenas lista divergências literais frente às cláusulas citadas e indica em `skipped` cada verificação que não pôde ser executada.
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-hs-classify
-dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
-```
 
 ## Configuration
 

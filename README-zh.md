@@ -4,6 +4,13 @@
 
 `dsh-hs-classify` 读取一份商品归类台账——表头加每个商品项一行——核对其中编号的结构：商品编号是否为十位数字、章／品目／子目是否为该编号的逐级前缀、层级是否由粗到细、每行是否填写归类依据、表头是否声明商品编号适用的税则版本、项号是否在台账内唯一、品名栏是否残留未替换的占位符。
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-hs-classify
+dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
+```
+
 ## 实际输出长什么样
 
 ![Terminal demo of dsh-hs-classify: real output over its HC-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hs-classify/main/docs/assets/dsh-hs-classify-hero.png)
@@ -70,13 +77,6 @@ be classified under.
 ## What it does
 
 规则表、字段说明与行为细节见 [README.md](README.md#what-it-does)（英文主版本）。本插件只列出材料与所引条款之间的字面差异，并对无法执行的检查在 `skipped` 中逐项说明。
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-hs-classify
-dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
-```
 
 ## Configuration
 

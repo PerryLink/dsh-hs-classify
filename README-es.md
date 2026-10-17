@@ -4,6 +4,13 @@
 
 `dsh-hs-classify` lee un registro de clasificación de mercancías —la cabecera del declarante más una fila por partida— y comprueba la estructura de los números que registra: que el código de mercancía tenga diez dígitos, que el capítulo, la partida y la subpartida sean prefijos sucesivos de ese código, que los niveles vayan de lo general a lo específico, que cada fila registre una base de clasificación, que la cabecera declare la versión del arancel a la que pertenecen los códigos, que los números de ítem sean únicos en el registro y que no quede ningún marcador de plantilla sin sustituir en la denominación.
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-hs-classify
+dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
+```
+
 ## Cómo se ve la salida
 
 ![Terminal demo of dsh-hs-classify: real output over its HC-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hs-classify/main/docs/assets/dsh-hs-classify-hero.png)
@@ -70,13 +77,6 @@ be classified under.
 ## What it does
 
 La tabla de reglas, los campos y el comportamiento detallado están en [README.md](README.md#what-it-does) (versión principal en inglés). El plugin sólo enumera divergencias literales frente a las cláusulas citadas e indica en `skipped` cada comprobación que no pudo ejecutarse.
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-hs-classify
-dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
-```
 
 ## Configuration
 

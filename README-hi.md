@@ -4,6 +4,13 @@
 
 `dsh-hs-classify` एक वर्गीकरण रजिस्टर — घोषणाकर्ता का हेडर और प्रत्येक मद की एक पंक्ति — पढ़ता है और उसमें दर्ज संख्याओं की संरचना की जाँच करता है: क्या माल-कोड दस अंकों का है, क्या उसका अध्याय, हेडिंग और उप-हेडिंग उस कोड के क्रमिक पूर्व-खंड हैं, क्या स्तर मोटे से बारीक की ओर जाते हैं, क्या हर पंक्ति में वर्गीकरण का आधार दर्ज है, क्या हेडर उस टैरिफ़ संस्करण की घोषणा करता है जिससे ये कोड संबंधित हैं, क्या मद-क्रमांक रजिस्टर में अद्वितीय हैं, और क्या मद के नाम में कोई बदला न गया प्लेसहोल्डर शेष है।
 
+## Install
+
+```sh
+dsh plugin --profile <name> add dsh-hs-classify
+dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
+```
+
 ## आउटपुट कैसा दिखता है
 
 ![Terminal demo of dsh-hs-classify: real output over its HC-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hs-classify/main/docs/assets/dsh-hs-classify-hero.png)
@@ -70,13 +77,6 @@ be classified under.
 ## What it does
 
 नियम-सूची, फ़ील्ड और विस्तृत व्यवहार [README.md](README.md#what-it-does) (अंग्रेज़ी मुख्य संस्करण) में हैं। यह प्लगइन केवल उद्धृत धाराओं के सामने शाब्दिक अंतर सूचीबद्ध करता है और हर न चल पाई जाँच को `skipped` में बताता है।
-
-## Install
-
-```sh
-dsh plugin --profile <name> add dsh-hs-classify
-dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
-```
 
 ## Configuration
 
