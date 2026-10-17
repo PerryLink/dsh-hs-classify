@@ -1,0 +1,14 @@
+[
+  {
+    "path": "docs/assets/dsh-hs-classify-hero.png",
+    "kind": "hero",
+    "alt": "dsh-hs-classify terminal output",
+    "caption": "Real dsh-hs-classify checker output; 31 tests passed."
+  },
+  {
+    "path": "docs/assets/dsh-hs-classify-demo.gif",
+    "kind": "demo",
+    "alt": "Animated dsh-hs-classify terminal session",
+    "caption": "The same run, assembled line by line."
+  }
+]
