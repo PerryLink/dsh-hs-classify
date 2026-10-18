@@ -42,26 +42,16 @@ dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
 
 **边界（中文译文，以英文原文为准）：** 本插件核对一份**商品归类台账**所记录编号的*结构*——商品编码是否为十位，其章、品目与子目是否依次为该编码的前缀，层级是否逐级细化，是否记录归类依据，是否声明税则版本，项号是否唯一，以及是否残留占位符。它**不**判定商品应当归入哪个编码。
 
-> ### ⚠️ It checks the shape of a code, never whether the code is right
+> ### ⚠️ 它核对的是编码的形态，从不判断编码是否正确（以英文原文为准）
 >
-> **Classification is a customs determination**, turning on the goods' material, function and degree of
-> processing together with the tariff's section and chapter notes and any classification decisions or advance
-> rulings. **This plugin does not consult the tariff, does not consult classification decisions, and does not
-> consult rulings.** So:
+> **归类是一项海关裁定**，取决于商品的材料、功能与加工深度，连同税则的类注、章注，以及任何归类决定或预裁定。**本插件不查阅税则，不查阅归类决定，也不查阅裁定。** 因此：
 >
-> - it **can** find "this row's code disagrees with the chapter, heading and subheading the same row states";
-> - it **cannot** find "this row's code does not match the goods", because that needs the tariff itself.
+> - 它**能**发现「这一行的编码与同一行所写的章、品目和子目不一致」；
+> - 它**不能**发现「这一行的编码与货物不相符」，因为那需要税则本身。
 >
-> A register with a structurally perfect code for the wrong goods passes this plugin. That is the documented
-> limit, stated in the header, in `HC-002`'s note, and in the troubleshooting section.
+> 一份给错误货物配上结构上完美编码的台账，会通过本插件。这就是已记录的边界，写在规则库库头、`HC-002` 的说明以及排障一节中。
 >
-> **Every `excerpt` in the rule pack says, in so many words, that the clause text was not obtained.** The
-> regime lives in 《中华人民共和国进出口税则》— whose codes are ten digits, the first six being the WCO
-> Harmonized System — and 《中华人民共和国进出口关税条例》. The verification pass could not retrieve
-> verbatim clause text, so the pack states the gap in the `excerpt` field itself and keeps every rule at
-> `warn` or `info`. **When the texts are in hand, replace each `excerpt` with the real clause and raise `kind`
-> to `direct`.** The ten-digit assumption is a `pattern` in the rule pack, so an annual tariff change needs a
-> rule-pack edit, not a code change.
+> **规则库中的每一个 `excerpt` 都明文写着：条款原文本次未取得。** 该制度见于《中华人民共和国进出口税则》——其编码为十位，前六位为 WCO 协调制度——以及《中华人民共和国进出口关税条例》。核验环节无法取得逐字条款原文，因此规则库在 `excerpt` 字段本身写明这一缺口，并把每条规则保持在 `warn` 或 `info`。**待取得原文后，请把每个 `excerpt` 换成真实条款，并把 `kind` 提到 `direct`。** 十位编码这一假设是规则库中的一条 `pattern`，因此年度税则变更需要改规则库，而不是改代码。
 
 ## Compatibility
 
