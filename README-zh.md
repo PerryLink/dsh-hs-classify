@@ -1,5 +1,7 @@
 # dsh-hs-classify — 商品归类层级一致性核对
 
+[English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
+
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
 
 `dsh-hs-classify` 读取一份商品归类台账——表头加每个商品项一行——核对其中编号的结构：商品编号是否为十位数字、章／品目／子目是否为该编号的逐级前缀、层级是否由粗到细、每行是否填写归类依据、表头是否声明商品编号适用的税则版本、项号是否在台账内唯一、品名栏是否残留未替换的占位符。

@@ -1,5 +1,7 @@
 # dsh-hs-classify — Verificação da coerência hierárquica do registo de classificação de mercadorias
 
+[English](README.md) · [简体中文](README-zh.md) · [Español](README-es.md) · [Português](README-pt.md) · [हिन्दी](README-hi.md)
+
 [![DSH Market](https://raw.githubusercontent.com/2BingLing/dsh-market/master/assets/readme/badge-listed-en.svg)](https://dsh.market/)
 
 `dsh-hs-classify` lê um registo de classificação de mercadorias —o cabeçalho do declarante mais uma linha por item— e verifica a estrutura dos números que regista: se o código de mercadoria tem dez dígitos, se o capítulo, a posição e a subposição são prefixos sucessivos desse código, se os níveis vão do mais geral para o mais específico, se cada linha regista um fundamento de classificação, se o cabeçalho declara a versão da pauta a que os códigos pertencem, se os números de item são únicos no registo e se não resta nenhum marcador de modelo por substituir na designação.
