@@ -40,11 +40,7 @@ dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
 | 《商品名称及编码协调制度》 | 现行版本本次未核实 | HC-002 |
 | 《中华人民共和国进出口关税条例》 | 国务院令第392号（2003年11月23日公布；根据2011年1月8日、2013年12月7日、2016年2月6日三次《国务院关于修改（废止）部分行政法规的决定》修订） | HC-003 |
 
-**Boundary:** this plugin checks a **商品归类台账** for the *structure* of the numbers it records — that a
-commodity code is ten digits, that its chapter, heading and subheading are successive prefixes of it, that the
-levels get progressively finer, that a classification basis is recorded, that the tariff version is declared,
-that item numbers are unique, and that no placeholder survives. It does **not** decide which code goods should
-be classified under.
+**边界（中文译文，以英文原文为准）：** 本插件核对一份**商品归类台账**所记录编号的*结构*——商品编码是否为十位，其章、品目与子目是否依次为该编码的前缀，层级是否逐级细化，是否记录归类依据，是否声明税则版本，项号是否唯一，以及是否残留占位符。它**不**判定商品应当归入哪个编码。
 
 > ### ⚠️ It checks the shape of a code, never whether the code is right
 >
