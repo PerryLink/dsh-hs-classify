@@ -15,13 +15,18 @@ dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
 
 ## Como é a saída
 
-![Terminal demo of dsh-hs-classify: real output over its HC-001 fixture](https://raw.githubusercontent.com/PerryLink/dsh-hs-classify/main/docs/assets/dsh-hs-classify-hero.png)
+![Diagrama de fluxo de dsh-hs-classify: chamada → plugin → resultado.](docs/assets/dsh-hs-classify-flow.svg)
 
-![Animated terminal demo of dsh-hs-classify](https://raw.githubusercontent.com/PerryLink/dsh-hs-classify/main/docs/assets/dsh-hs-classify-demo.gif)
+*Visão geral do fluxo: chamada → plugin → resultado. Os exemplos abaixo usam a superfície real de comandos.*
+
 
 Saída real deste plugin sobre o seu próprio fixture de teste `HC-001` — não é uma simulação. O pacote de regras não inventa citações, por isso cada achado nomeia a cláusula aplicada e avisa que o seu texto não foi obtido.
 
 ## O que ele responde
+
+### Exemplos
+
+A tabela abaixo é o conjunto de exemplos: a primeira linha é o caso detalhado e as demais são casos curtos.
 
 | Você pergunta | O que ele responde |
 |---|---|
