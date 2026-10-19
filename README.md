@@ -28,6 +28,35 @@ dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
 
 The table below is the example set: the first row is the detailed walkthrough, the remaining rows are short cases.
 
+#### Detailed output
+
+**Tool** `hs_classify`
+
+**Input**
+
+~~~json
+{"rows":[{"品名":"便携式自动数据处理设备","子目":"847140","商品编号":"8471300000"}]}
+~~~
+ 
+**Output**
+
+~~~json
+{
+  "id": "dsh-hs-classify.HC-002.de09b5a6",
+  "ruleId": "HC-002",
+  "severity": "warn",
+  "locator": {
+    "field": "subheading",
+    "row": 1
+  },
+  "found": "第 1 行「subheading」为「847140」，不是「hsCode」（8471300000）的前缀",
+  "expected": "「subheading」应与「hsCode」的前几位一致",
+  "fix": "核对层级填写；本条只核对前缀关系，不判断归类是否正确"
+}
+~~~
+
+*Observed from `tests/fixtures/HC-002/HC-002-unsafe.json (cases.json expects HC-002 count 1); run via lib/index.mjs rules/hs-classify.yaml`*
+
 | You ask | What it answers |
 |---|---|
 | Some codes in our register are eight digits, and one ends with a letter. Will the check report them? | Yes. `HC-001` matches every filled `hsCode` against the pack's `pattern`, `^[0-9]{10}$`, and reports the row together with the value it read. It checks the digit count and the characters only, never whether the goods belong under that code. A blank code cell is passed over, so what it reports is a code of the wrong shape, not a code that is missing. The ten digits are a pack setting: when the annual tariff changes the length, edit the `pattern`, not the code. |

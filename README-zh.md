@@ -29,6 +29,35 @@ dsh --profile <name> --dump-config | grep 'dsh-hs-classify'
 
 下表是示例集：第一行是详细走查，其余行是简短案例。
 
+#### 详细输出
+
+**工具** `hs_classify`
+
+**输入**
+
+~~~json
+{"rows":[{"品名":"便携式自动数据处理设备","子目":"847140","商品编号":"8471300000"}]}
+~~~
+ 
+**输出**
+
+~~~json
+{
+  "id": "dsh-hs-classify.HC-002.de09b5a6",
+  "ruleId": "HC-002",
+  "severity": "warn",
+  "locator": {
+    "field": "subheading",
+    "row": 1
+  },
+  "found": "第 1 行「subheading」为「847140」，不是「hsCode」（8471300000）的前缀",
+  "expected": "「subheading」应与「hsCode」的前几位一致",
+  "fix": "核对层级填写；本条只核对前缀关系，不判断归类是否正确"
+}
+~~~
+
+*来源 `tests/fixtures/HC-002/HC-002-unsafe.json (cases.json expects HC-002 count 1); run via lib/index.mjs rules/hs-classify.yaml`*
+
 | 你会问 | 它怎么答 |
 |---|---|
 | 台账里的编号有的是八位，还有一个末位是字母，会被报出吗？ | 会。`HC-001` 把每个已填写的 `hsCode` 与规则库的 `pattern`（`^[0-9]{10}$`）比对，报出该行并附上它读到的值。它只核对位数与字符合法性，绝不判断该商品是否应归入这个编号。编号栏留空的不在本条范围内，所以它报的是形式不对的编号，不是缺填的编号。十位是规则库配置：年度税则改了位数，改 `pattern` 即可，不必改代码。 |

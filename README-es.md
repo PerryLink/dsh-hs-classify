@@ -29,6 +29,35 @@ Salida real de este plugin sobre su propio fixture de prueba `HC-001` — no es 
 
 La tabla siguiente es el conjunto de ejemplos: la primera fila es el caso detallado y las demás son casos breves.
 
+#### Salida detallada
+
+**Herramienta** `hs_classify`
+
+**Entrada**
+
+~~~json
+{"rows":[{"品名":"便携式自动数据处理设备","子目":"847140","商品编号":"8471300000"}]}
+~~~
+ 
+**Salida**
+
+~~~json
+{
+  "id": "dsh-hs-classify.HC-002.de09b5a6",
+  "ruleId": "HC-002",
+  "severity": "warn",
+  "locator": {
+    "field": "subheading",
+    "row": 1
+  },
+  "found": "第 1 行「subheading」为「847140」，不是「hsCode」（8471300000）的前缀",
+  "expected": "「subheading」应与「hsCode」的前几位一致",
+  "fix": "核对层级填写；本条只核对前缀关系，不判断归类是否正确"
+}
+~~~
+
+*Observado en `tests/fixtures/HC-002/HC-002-unsafe.json (cases.json expects HC-002 count 1); run via lib/index.mjs rules/hs-classify.yaml`*
+
 | Usted pregunta | Qué responde |
 |---|---|
 | Algunos códigos del registro tienen ocho dígitos y uno termina en letra. ¿Se informa de ellos? | Sí. `HC-001` contrasta cada `hsCode` relleno con el `pattern` del paquete de reglas, `^[0-9]{10}$`, e informa de la fila junto con el valor que leyó. Solo comprueba el número de dígitos y los caracteres, nunca si la mercancía corresponde a ese código. Una celda de código vacía no se mira: lo que informa es un código con la forma incorrecta, no un código que falta. Los diez dígitos son un ajuste del paquete de reglas: cuando el arancel anual cambie la longitud, se edita el `pattern`, no el código. |
