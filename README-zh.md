@@ -1,6 +1,6 @@
 # dsh-hs-classify — 商品归类层级一致性核对
 
-## 快速试跑（1 分钟）
+### 快速试跑（1 分钟）
 
 ```bash
 node samples/quickstart/run.mjs --check
