@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="430" viewBox="0 0 1200 430" role="img" aria-label="dsh-hs-classify pipeline">
+<title>dsh-hs-classify pipeline</title>
+<rect width="1200" height="430" rx="18" fill="#0d1117"/>
+<text x="60" y="62" fill="#f0f6fc" font-family="ui-sans-serif,system-ui,sans-serif" font-size="30" font-weight="700">dsh-hs-classify</text>
+<text x="60" y="94" fill="#8b949e" font-family="ui-monospace,monospace" font-size="15">hs_classify · tools:register · rules/hs-classify.yaml</text>
+<line x1="60" y1="116" x2="1140" y2="116" stroke="#30363d"/>
+<rect x="30" y="150" width="200" height="132" rx="14" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+<text x="130" y="192" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="18" font-weight="700">file</text>
+<text x="130" y="224" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">material</text>
+<text x="130" y="248" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">JSON · YAML</text>
+<path d="M235 216h23" stroke="#8b949e" stroke-width="3"/>
+<path d="M256 209l10 7-10 7" fill="none" stroke="#8b949e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="265" y="150" width="200" height="132" rx="14" fill="#161b22" stroke="#8ea6e8" stroke-width="2"/>
+<text x="365" y="192" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="18" font-weight="700">hs_classify</text>
+<text x="365" y="224" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">rows[]</text>
+<text x="365" y="248" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">columns → fields</text>
+<path d="M470 216h23" stroke="#8b949e" stroke-width="3"/>
+<path d="M491 209l10 7-10 7" fill="none" stroke="#8b949e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="500" y="150" width="200" height="132" rx="14" fill="#161b22" stroke="#8ea6e8" stroke-width="2"/>
+<text x="600" y="192" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="18" font-weight="700">rules/</text>
+<text x="600" y="224" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">hs-classify.yaml</text>
+<text x="600" y="248" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">HC-001 … HC-006</text>
+<path d="M705 216h23" stroke="#8b949e" stroke-width="3"/>
+<path d="M726 209l10 7-10 7" fill="none" stroke="#8b949e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="735" y="150" width="200" height="132" rx="14" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+<text x="835" y="192" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="18" font-weight="700">issues[]</text>
+<text x="835" y="224" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">skipped[]</text>
+<text x="835" y="248" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">ruleId · row · field</text>
+<path d="M940 216h23" stroke="#8b949e" stroke-width="3"/>
+<path d="M961 209l10 7-10 7" fill="none" stroke="#8b949e" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="970" y="150" width="200" height="132" rx="14" fill="#161b22" stroke="#30363d" stroke-width="2"/>
+<text x="1070" y="192" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="18" font-weight="700">markdown</text>
+<text x="1070" y="224" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">reportJson</text>
+<text x="1070" y="248" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="12">findings · reasons</text>
+<rect x="171" y="306" width="128" height="30" rx="8" fill="#1c2330" stroke="#30363d"/>
+<text x="235" y="326" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14">HC-001</text>
+<rect x="317" y="306" width="128" height="30" rx="8" fill="#1c2330" stroke="#30363d"/>
+<text x="381" y="326" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14">HC-002</text>
+<rect x="463" y="306" width="128" height="30" rx="8" fill="#1c2330" stroke="#30363d"/>
+<text x="527" y="326" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14">HC-003</text>
+<rect x="609" y="306" width="128" height="30" rx="8" fill="#1c2330" stroke="#30363d"/>
+<text x="673" y="326" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14">HC-004</text>
+<rect x="755" y="306" width="128" height="30" rx="8" fill="#1c2330" stroke="#30363d"/>
+<text x="819" y="326" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14">HC-005</text>
+<rect x="901" y="306" width="128" height="30" rx="8" fill="#1c2330" stroke="#30363d"/>
+<text x="965" y="326" fill="#f0f6fc" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14">HC-006</text>
+<rect x="30" y="352" width="1140" height="38" rx="10" fill="#161b22" stroke="#30363d"/>
+<text x="600" y="376" fill="#8b949e" text-anchor="middle" font-family="ui-monospace,monospace" font-size="14">rulesFile · disabledRules · onlyRules · skipNotes · timeoutMs</text>
+<text x="60" y="416" fill="#8b949e" font-family="ui-monospace,monospace" font-size="13">PerryLink DSH plugin family · Apache-2.0</text>
+</svg>
