@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-flow-dark.svg">
-  <img src="docs/assets/dsh-hs-classify-flow-light.svg" width="100%" alt="dsh-hs-classify 数据流：file/material → hs_classify → rules/hs-classify.yaml（HC-001…HC-006）→ issues[]/skipped[] → markdown/reportJson">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-hero-zh-dark.webp">
+  <img src="docs/assets/dsh-hs-classify-hero-zh-light.webp" width="100%" alt="dsh-hs-classify 配图：左列是插件名与价值句；右侧是一份商品归类台账——表头未声明税则版本，第 1 行子目 847140 与商品编号 8471300000 不符；下方把商品编号拆成十个数字格，用章 2 位、品目 4 位、子目 6 位、编号 10 位四条括号标出前缀关系；底部 issues[] 4 条差异、skipped[] 1 条未执行，结论留给审核人">
 </picture>
 
 # dsh-hs-classify
@@ -37,6 +37,11 @@ dsh plugin --profile <name> add dsh-hs-classify
 ## 它是什么
 
 `dsh-hs-classify` 读取一份商品归类台账——表头加每个商品项一行——核对其中编号与层级记录的结构：商品编号是不是十位数字，章、品目、子目是不是该编号的逐级前缀，层级有没有由粗到细，每行有没有填归类依据，表头有没有声明税则版本，项号在台账内是否唯一，品名栏有没有残留模板占位符。它把差异逐条列成「哪一行、哪一栏、差什么」，无法执行的检查放进 `skipped` 并写明原因。它不改原件，不上传材料，不查税则，也不判断商品应当归入哪个编号。
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-hs-classify-flow-v5-light.svg" width="100%" alt="dsh-hs-classify 结构图：一份台账的表头与两行材料在左，十位商品编号拆成 2 / 4 / 6 / 10 四级前缀阶梯——子目 847140 与商品编号 8471300000 在第 5 位分岔；表头与其它行栏各自标出所读规则；右侧两条通道 issues[]（4 条差异）与 skipped[]（1 条未执行）汇入 buildView() 的 markdown / reportJson 投影，结论留给审核人">
+</picture>
 
 ## 三步上手
 
@@ -316,7 +321,7 @@ node samples/quickstart/run.mjs
 | `samples/quickstart/` | 可复跑的最小样例与期望输出 |
 | `scripts/` | 门禁脚本与配图生成脚本 |
 
-README 配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Python + Pillow，命令：`python scripts/gen-readme-assets.py`），产出 `docs/assets/dsh-hs-classify-flow-{light,dark}.svg` 两个深浅版本；旧的单版 `docs/assets/dsh-hs-classify-flow.svg` 保留以防外链失效。仓库内没有 benchmark 数据，因此不出 evidence 图。
+README 配图由 [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) 程序化生成（Pillow 画 hero 横幅、手写 SVG 画结构图；命令：`python scripts/gen-readme-assets.py`），产出 `docs/assets/dsh-hs-classify-hero-{zh,en}-{light,dark}.webp` 与 `docs/assets/dsh-hs-classify-flow-v5-{light,dark}.svg`。旧的单版/双版流程图保留在 `docs/assets/` 以防外链失效。仓库内没有 benchmark 数据，因此不出 evidence 图。
 
 Topics：`deepseek-harness`, `dsh`, `dsh-plugin`, `cordis`, `classify`
 

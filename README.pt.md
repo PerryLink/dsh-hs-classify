@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-flow-dark.svg">
-  <img src="docs/assets/dsh-hs-classify-flow-light.svg" width="100%" alt="Fluxo do dsh-hs-classify: file/material → hs_classify → rules/hs-classify.yaml (HC-001…HC-006) → issues[]/skipped[] → markdown/reportJson">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-hero-en-dark.webp">
+  <img src="docs/assets/dsh-hs-classify-hero-en-light.webp" width="100%" alt="Imagem do dsh-hs-classify: à esquerda, o nome e as frases de valor; à direita, um registo de classificação de mercadorias cujo cabeçalho não declara a versão da pauta e cuja linha 1 tem a subposição 847140, que não coincide com o código 8471300000; abaixo, o código é dividido em dez células de dígitos com parênteses de capítulo 2, posição 4, subposição 6 e código 10; a linha inferior mostra issues[] 4 e skipped[] 1, com a conclusão deixada ao revisor">
 </picture>
 
 # dsh-hs-classify
@@ -37,6 +37,11 @@ dsh plugin --profile <name> add dsh-hs-classify
 ## O que é
 
 `dsh-hs-classify` lê um registo de classificação de mercadorias — o cabeçalho do declarante mais uma linha por item — e verifica a estrutura dos números que regista: se o código de mercadoria tem dez dígitos, se o capítulo, a posição e a subposição são prefixos sucessivos desse código, se os níveis vão do mais geral para o mais específico, se cada linha regista um fundamento de classificação, se o cabeçalho declara a versão da pauta a que os códigos pertencem, se os números de item são únicos no registo e se não resta nenhum marcador de modelo por substituir na designação. Devolve as diferenças como «que linha, que coluna, o que difere», e cada verificação que não pôde correr aparece em `skipped` com o motivo. Não altera o original, não envia o material, não consulta a pauta e não decide em que código as mercadorias devem ser classificadas.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-hs-classify-flow-v5-light.svg" width="100%" alt="Estrutura do dsh-hs-classify: o cabeçalho do registo e duas linhas de material à esquerda; o código de dez dígitos sobe uma escada de prefixos 2 / 4 / 6 / 10, onde a subposição 847140 diverge do código 8471300000 no dígito 5; o cabeçalho e os restantes campos de linha marcam a regra que lê cada um; à direita, dois canais — issues[] (4 diferenças) e skipped[] (1 não executada) — convergem na projeção markdown / reportJson de buildView(), com a conclusão deixada ao revisor">
+</picture>
 
 ## Instalação em três passos
 
@@ -316,7 +321,7 @@ O `prepublishOnly` volta a correr a porta, pelo que uma release não pode public
 | `samples/quickstart/` | a amostra mínima reexecutável e o resultado esperado |
 | `scripts/` | scripts de porta e o gerador de imagens |
 
-As imagens do README são geradas programaticamente por [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow; execute `python scripts/gen-readme-assets.py`), produzindo `docs/assets/dsh-hs-classify-flow-{light,dark}.svg`. O antigo `docs/assets/dsh-hs-classify-flow.svg` de tema único é conservado para que os links externos continuem a resolver. Este repositório não tem dados de benchmark, pelo que não é desenhado gráfico de evidência.
+As imagens do README são geradas programaticamente por [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow para as faixas hero, SVG escrito à mão para o diagrama de estrutura; execute `python scripts/gen-readme-assets.py`), produzindo `docs/assets/dsh-hs-classify-hero-{zh,en}-{light,dark}.webp` e `docs/assets/dsh-hs-classify-flow-v5-{light,dark}.svg`. Os antigos diagramas de fluxo permanecem em `docs/assets/` para que os links externos continuem a resolver. Este repositório não tem dados de benchmark, pelo que não é desenhado gráfico de evidência.
 
 Topics: `deepseek-harness`, `dsh`, `dsh-plugin`, `cordis`, `classify`
 

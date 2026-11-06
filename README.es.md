@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-flow-dark.svg">
-  <img src="docs/assets/dsh-hs-classify-flow-light.svg" width="100%" alt="Flujo de dsh-hs-classify: file/material → hs_classify → rules/hs-classify.yaml (HC-001…HC-006) → issues[]/skipped[] → markdown/reportJson">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-hero-en-dark.webp">
+  <img src="docs/assets/dsh-hs-classify-hero-en-light.webp" width="100%" alt="Imagen de dsh-hs-classify: a la izquierda, el nombre y las frases de valor; a la derecha, un registro de clasificación de mercancías cuya cabecera no declara la versión del arancel y cuya fila 1 tiene la subpartida 847140, que no coincide con el código 8471300000; debajo, el código se divide en diez celdas de dígitos con corchetes de capítulo 2, partida 4, subpartida 6 y código 10; la línea inferior muestra issues[] 4 y skipped[] 1, y la conclusión queda en el revisor">
 </picture>
 
 # dsh-hs-classify
@@ -37,6 +37,11 @@ dsh plugin --profile <name> add dsh-hs-classify
 ## Qué es
 
 `dsh-hs-classify` lee un registro de clasificación de mercancías —la cabecera del declarante más una fila por partida— y comprueba la estructura de los números que registra: que el código de mercancía tenga diez dígitos, que el capítulo, la partida y la subpartida sean prefijos sucesivos de ese código, que los niveles vayan de lo general a lo específico, que cada fila registre una base de clasificación, que la cabecera declare la versión del arancel a la que pertenecen los códigos, que los números de ítem sean únicos en el registro y que no quede ningún marcador de plantilla sin sustituir en la denominación. Devuelve las diferencias como «qué fila, qué columna, qué difiere», y cada comprobación que no pudo ejecutarse aparece en `skipped` con su motivo. No modifica el original, no sube el material, no consulta el arancel y no decide en qué código deben clasificarse las mercancías.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-hs-classify-flow-v5-light.svg" width="100%" alt="Estructura de dsh-hs-classify: la cabecera del registro y dos filas de material a la izquierda; el código de diez dígitos sube por una escalera de prefijos 2 / 4 / 6 / 10, donde la subpartida 847140 se separa del código 8471300000 en el dígito 5; la cabecera y los demás campos de fila marcan la regla que lee cada uno; a la derecha, dos canales — issues[] (4 diferencias) y skipped[] (1 no ejecutada) — confluyen en la proyección markdown / reportJson de buildView(), con la conclusión en el revisor">
+</picture>
 
 ## Instalación en tres pasos
 
@@ -316,7 +321,7 @@ node samples/quickstart/run.mjs
 | `samples/quickstart/` | la muestra mínima reejecutable y su resultado esperado |
 | `scripts/` | scripts de puerta y el generador de imágenes |
 
-Las imágenes del README se generan programáticamente con [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow; ejecute `python scripts/gen-readme-assets.py`), que produce `docs/assets/dsh-hs-classify-flow-{light,dark}.svg`. El antiguo `docs/assets/dsh-hs-classify-flow.svg` de un solo tema se conserva para que los enlaces externos sigan resolviendo. Este repositorio no tiene datos de benchmark, así que no se dibuja gráfico de evidencia.
+Las imágenes del README se generan programáticamente con [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow para las bandas hero, SVG escrito a mano para el diagrama de estructura; ejecute `python scripts/gen-readme-assets.py`), que produce `docs/assets/dsh-hs-classify-hero-{zh,en}-{light,dark}.webp` y `docs/assets/dsh-hs-classify-flow-v5-{light,dark}.svg`. Los antiguos diagramas de flujo se conservan en `docs/assets/` para que los enlaces externos sigan resolviendo. Este repositorio no tiene datos de benchmark, así que no se dibuja gráfico de evidencia.
 
 Topics: `deepseek-harness`, `dsh`, `dsh-plugin`, `cordis`, `classify`
 

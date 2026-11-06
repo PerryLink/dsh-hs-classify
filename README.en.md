@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-flow-dark.svg">
-  <img src="docs/assets/dsh-hs-classify-flow-light.svg" width="100%" alt="dsh-hs-classify data flow: file/material → hs_classify → rules/hs-classify.yaml (HC-001…HC-006) → issues[]/skipped[] → markdown/reportJson">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-hero-en-dark.webp">
+  <img src="docs/assets/dsh-hs-classify-hero-en-light.webp" width="100%" alt="dsh-hs-classify hero: the left column carries the name and the value lines; on the right, a commodity-classification register whose header declares no tariff version and whose row 1 subheading 847140 does not match commodity code 8471300000; below it the code is laid out as ten digit cells with brackets for chapter 2, heading 4, subheading 6 and code 10; the bottom line shows issues[] 4 and skipped[] 1, with the verdict left to the reviewer">
 </picture>
 
 # dsh-hs-classify
@@ -37,6 +37,11 @@ dsh plugin --profile <name> add dsh-hs-classify
 ## What it is
 
 `dsh-hs-classify` reads one commodity-classification register — the declarant header plus one row per item — and checks the structure of the numbers it records: that a commodity code is ten digits, that its chapter, heading and subheading are successive prefixes of the code, that the levels get progressively finer, that each row records a classification basis, that the header declares the tariff version the codes belong to, that item numbers are unique within the register, and that no unreplaced placeholder survives in the item name. It returns the differences as "which row, which column, what differs", and every check that could not run is listed in `skipped` with its reason. It does not modify the original, does not upload the material, does not consult the tariff, and does not decide which code the goods belong under.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-hs-classify-flow-v5-light.svg" width="100%" alt="dsh-hs-classify structure: the register header and two material rows sit on the left; the ten-digit commodity code climbs a 2 / 4 / 6 / 10 prefix staircase, where subheading 847140 diverges from code 8471300000 at digit 5; the header and the other row fields mark the rule that reads each; on the right, two channels — issues[] (4 differences) and skipped[] (1 not run) — merge into buildView()'s markdown / reportJson projection, with the verdict left to the reviewer">
+</picture>
 
 ## Three-step setup
 
@@ -316,7 +321,7 @@ node samples/quickstart/run.mjs
 | `samples/quickstart/` | the re-runnable minimal sample and its expected result |
 | `scripts/` | gate scripts and the asset generator |
 
-The README images are generated programmatically by [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Python + Pillow; run `python scripts/gen-readme-assets.py`), producing `docs/assets/dsh-hs-classify-flow-{light,dark}.svg`. The old single-theme `docs/assets/dsh-hs-classify-flow.svg` stays on disk so existing external links keep resolving. This repository has no benchmark data, so no evidence chart is drawn.
+The README images are generated programmatically by [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) (Pillow for the hero banners, hand-written SVG for the structure diagram; run `python scripts/gen-readme-assets.py`), producing `docs/assets/dsh-hs-classify-hero-{zh,en}-{light,dark}.webp` and `docs/assets/dsh-hs-classify-flow-v5-{light,dark}.svg`. The older flow diagrams stay on disk so external links keep resolving. This repository has no benchmark data, so no evidence chart is drawn.
 
 Topics: `deepseek-harness`, `dsh`, `dsh-plugin`, `cordis`, `classify`
 

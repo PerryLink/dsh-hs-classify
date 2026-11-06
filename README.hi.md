@@ -1,8 +1,8 @@
 <div align="center">
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-flow-dark.svg">
-  <img src="docs/assets/dsh-hs-classify-flow-light.svg" width="100%" alt="dsh-hs-classify प्रवाह: file/material → hs_classify → rules/hs-classify.yaml (HC-001…HC-006) → issues[]/skipped[] → markdown/reportJson">
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-hero-en-dark.webp">
+  <img src="docs/assets/dsh-hs-classify-hero-en-light.webp" width="100%" alt="dsh-hs-classify चित्र: बाईं ओर नाम और मूल्य-पंक्तियाँ; दाईं ओर एक माल-वर्गीकरण रजिस्टर, जिसका हेडर टैरिफ़ संस्करण नहीं बताता और पंक्ति 1 की उप-हेडिंग 847140 माल-कोड 8471300000 से मेल नहीं खाती; नीचे कोड दस अंक-कोष्ठों में बाँटा गया है, अध्याय 2, हेडिंग 4, उप-हेडिंग 6 और कोड 10 के कोष्ठों के साथ; अंतिम पंक्ति में issues[] 4 और skipped[] 1 हैं, निर्णय समीक्षक के पास है">
 </picture>
 
 # dsh-hs-classify
@@ -37,6 +37,11 @@ dsh plugin --profile <name> add dsh-hs-classify
 ## यह क्या है
 
 `dsh-hs-classify` एक वर्गीकरण रजिस्टर — घोषणाकर्ता का हेडर और प्रत्येक मद की एक पंक्ति — पढ़ता है और उसमें दर्ज संख्याओं की संरचना की जाँच करता है: क्या माल-कोड दस अंकों का है, क्या उसका अध्याय, हेडिंग और उप-हेडिंग उस कोड के क्रमिक पूर्व-खंड हैं, क्या स्तर मोटे से बारीक की ओर जाते हैं, क्या हर पंक्ति में वर्गीकरण का आधार दर्ज है, क्या हेडर उस टैरिफ़ संस्करण की घोषणा करता है जिससे ये कोड संबंधित हैं, क्या मद-क्रमांक रजिस्टर में अद्वितीय हैं, और क्या मद के नाम में कोई बदला न गया प्लेसहोल्डर शेष है। यह अंतरों को «कौन-सी पंक्ति, कौन-सा कॉलम, क्या अंतर» के रूप में लौटाता है, और हर वह जाँच जो नहीं चल सकी, कारण के साथ `skipped` में आती है। यह मूल को नहीं बदलता, सामग्री अपलोड नहीं करता, टैरिफ़ नहीं देखता और यह निर्णय नहीं देता कि माल किस कोड में वर्गीकृत होना चाहिए।
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/dsh-hs-classify-flow-v5-dark.svg">
+  <img src="docs/assets/dsh-hs-classify-flow-v5-light.svg" width="100%" alt="dsh-hs-classify संरचना: बाईं ओर रजिस्टर का हेडर और सामग्री की दो पंक्तियाँ; दस अंकों का माल-कोड 2 / 4 / 6 / 10 पूर्व-खंड सीढ़ी पर चढ़ता है, जहाँ उप-हेडिंग 847140 अंक 5 पर कोड 8471300000 से अलग होती है; हेडर और अन्य पंक्ति-फ़ील्ड बताते हैं कि कौन-सा नियम क्या पढ़ता है; दाईं ओर दो चैनल — issues[] (4 अंतर) और skipped[] (1 नहीं चला) — buildView() के markdown / reportJson प्रक्षेपण में मिलते हैं, निर्णय समीक्षक के पास है">
+</picture>
 
 ## तीन चरणों में शुरुआत
 
@@ -316,7 +321,7 @@ node samples/quickstart/run.mjs
 | `samples/quickstart/` | दोबारा चलाया जा सकने वाला न्यूनतम नमूना और अपेक्षित परिणाम |
 | `scripts/` | गेट स्क्रिप्ट और चित्र जनरेटर |
 
-README के चित्र [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से प्रोग्रामेटिक रूप से बनते हैं (Python + Pillow; चलाएँ `python scripts/gen-readme-assets.py`), जो `docs/assets/dsh-hs-classify-flow-{light,dark}.svg` बनाता है। पुराना एकल-थीम `docs/assets/dsh-hs-classify-flow.svg` बाहरी लिंक टूटने से बचाने के लिए रखा गया है। इस रेपो में benchmark डेटा नहीं है, इसलिए evidence चित्र नहीं बनाया जाता।
+README के चित्र [`scripts/gen-readme-assets.py`](scripts/gen-readme-assets.py) से प्रोग्रामेटिक रूप से बनते हैं (hero बैनर के लिए Pillow, संरचना-चित्र के लिए हाथ से लिखा SVG; चलाएँ `python scripts/gen-readme-assets.py`), जो `docs/assets/dsh-hs-classify-hero-{zh,en}-{light,dark}.webp` और `docs/assets/dsh-hs-classify-flow-v5-{light,dark}.svg` बनाता है। पुराने प्रवाह-चित्र `docs/assets/` में बाहरी लिंक टूटने से बचाने के लिए रखे गए हैं। इस रेपो में benchmark डेटा नहीं है, इसलिए evidence चित्र नहीं बनाया जाता।
 
 Topics: `deepseek-harness`, `dsh`, `dsh-plugin`, `cordis`, `classify`
 
