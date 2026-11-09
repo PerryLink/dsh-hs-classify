@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "tier": "L1-lite",
+  "input_formats": [
+    "json",
+    "yaml"
+  ],
+  "outputs": [
+    "markdown",
+    "json"
+  ],
+  "rules": {
+    "total": 6,
+    "executed": 6,
+    "skipped": 0,
+    "manual": 0,
+    "unsupported": 0
+  },
+  "benchmark": {
+    "kind": "quickstart-sample",
+    "corpus_size": 1,
+    "note": "HS 归类层级表的 quickstart 样例；无真实报关单语料",
+    "measured_at": "2026-11-09"
+  },
+  "limits": [
+    "不判断归类是否正确，只核对章/品目/子目层级自洽",
+    "不做合规/定性判定；未执行规则会列在 skipped"
+  ]
+}
