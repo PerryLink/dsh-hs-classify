@@ -1,0 +1,76 @@
+{
+  "dataset": "USITC HTS current export (U.S. Government work; public domain)",
+  "source": "https://hts.usitc.gov/reststop/exportList?from=0101&to=9999.99.99.99&format=JSON&styles=false",
+  "license": "public domain (US federal work)",
+  "rows": 20,
+  "generatedAt": "2026-11-10T12:01:40.535Z",
+  "scoredRules": [
+    {
+      "rule": "HC-001",
+      "tp": 20,
+      "fp": 0,
+      "fn": 0,
+      "tn": 20,
+      "precision": 1,
+      "recall": 1
+    },
+    {
+      "rule": "HC-002",
+      "tp": 20,
+      "fp": 0,
+      "fn": 0,
+      "tn": 20,
+      "precision": 1,
+      "recall": 1
+    },
+    {
+      "rule": "HC-003",
+      "tp": 20,
+      "fp": 0,
+      "fn": 0,
+      "tn": 20,
+      "precision": 1,
+      "recall": 1
+    },
+    {
+      "rule": "HC-004",
+      "tp": 20,
+      "fp": 0,
+      "fn": 0,
+      "tn": 20,
+      "precision": 1,
+      "recall": 1
+    },
+    {
+      "rule": "HC-005",
+      "tp": 20,
+      "fp": 0,
+      "fn": 0,
+      "tn": 20,
+      "precision": 1,
+      "recall": 1
+    },
+    {
+      "rule": "HC-006",
+      "tp": 20,
+      "fp": 0,
+      "fn": 0,
+      "tn": 20,
+      "precision": 1,
+      "recall": 1
+    }
+  ],
+  "total": {
+    "tp": 120,
+    "fp": 0,
+    "fn": 0,
+    "tn": 120,
+    "precision": 1,
+    "recall": 1
+  },
+  "limitations": [
+    "HTS lines are valid hierarchy examples, not product-specific classification ground truth.",
+    "The benchmark tests the plugin hierarchy/format rules only; it does not test whether a product belongs to the code.",
+    "HTS is U.S. tariff nomenclature, not the Chinese 10-digit tariff schedule."
+  ]
+}
