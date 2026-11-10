@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="660" viewBox="0 0 1100 660" role="img" aria-label="dsh-hs-classify 结构图：台账的十位编号拆成 2 / 4 / 6 / 10 四级前缀阶梯；六条规则各读一栏，差异进 issues[]、未执行进 skipped[]，最后由 buildView() 投影成报告">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="0.3" y2="1"><stop offset="0" stop-color="#f9f6fd"/><stop offset="1" stop-color="#e4eaf8"/></linearGradient>
+<filter id="soft" x="-30%" y="-30%" width="160%" height="170%"><feDropShadow dx="0" dy="7" stdDeviation="9" flood-color="#16122c" flood-opacity="0.10"/></filter>
+<marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5.6" markerHeight="5.6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#4B67B4"/></marker>
+</defs>
+<rect width="1100" height="660" fill="url(#bg)"/>
+<text x="44" y="52" fill="#141419" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="24" font-weight="700">dsh-hs-classify</text>
+<text x="272" y="52" fill="#141419" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="23" font-weight="700">十位编号的四级前缀 · 两条出口</text>
+<rect x="843.0" y="34" width="213.0" height="24" rx="12.0" fill="#f5f2fb"/>
+<text x="854.0" y="49.91" fill="#4B67B4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11.5">规则库 v2026.1 · HC-001…HC-006</text>
+<text x="44" y="84" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="14">一份台账 = 表头 + 每行若干栏；十位编号拆成 2 / 4 / 6 / 10 四级前缀。能执行的检查出差异，不能执行的出原因。</text>
+<line x1="44" y1="100" x2="1056" y2="100" stroke="#dcd8ea" stroke-width="1"/>
+<rect x="44" y="112" width="286" height="244" rx="20" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.5" filter="url(#soft)"/>
+<text x="62" y="130" fill="#4B67B4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="700">材料 · 一份台账</text>
+<text x="62" y="150" fill="#8f94a4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">file | material · JSON / YAML</text>
+<line x1="62" y1="166" x2="312" y2="166" stroke="#dcd8ea" stroke-width="1"/>
+<text x="62" y="180" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">表头 header</text>
+<text x="62" y="200" fill="#141419" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11.5">tariffVersion</text>
+<text x="160" y="200" fill="#b45309" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11.5" font-weight="700">未声明</text>
+<text x="62" y="224" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">行 rows[] · 2 行</text>
+<text x="62" y="242" fill="#141419" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12">1 · 便携式自动数据处理设备</text>
+<text x="62" y="260" fill="#4d5261" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">子目 847140 · 编号 8471300000</text>
+<text x="62" y="282" fill="#141419" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12">1 · 【待补充】</text>
+<text x="62" y="300" fill="#4d5261" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">子目 847130 · 编号 8471300000</text>
+<text x="62" y="324" fill="#b45309" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" font-weight="700">无「归类依据 basis」列</text>
+<text x="62" y="342" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">列名归一 · 大小写不敏感</text>
+<rect x="44" y="372" width="286" height="148" rx="20" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.5" filter="url(#soft)"/>
+<text x="62" y="390" fill="#4B67B4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="700">表头 / 行级其它栏</text>
+<text x="62" y="408" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">每条规则各读自己那一栏</text>
+<text x="62" y="430" fill="#141419" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" font-weight="700">HC-004</text>
+<text x="116" y="430" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">tariffVersion 未声明</text>
+<circle cx="304" cy="434" r="3.4" fill="#b45309"/>
+<text x="62" y="452" fill="#141419" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" font-weight="700">HC-005</text>
+<text x="116" y="452" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">itemNo 重复「1」</text>
+<circle cx="304" cy="456" r="3.4" fill="#b45309"/>
+<text x="62" y="474" fill="#141419" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" font-weight="700">HC-006</text>
+<text x="116" y="474" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">description 残留「【」</text>
+<circle cx="304" cy="478" r="3.4" fill="#b45309"/>
+<text x="62" y="496" fill="#141419" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" font-weight="700">HC-003</text>
+<text x="116" y="496" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">basis 整列缺失</text>
+<circle cx="304" cy="500" r="3.4" fill="#8f94a4"/>
+<rect x="344" y="112" width="410" height="408" rx="20" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.5" filter="url(#soft)"/>
+<text x="362" y="130" fill="#4B67B4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="13" font-weight="700">编号层级 · 由粗到细</text>
+<text x="362" y="150" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">HC-001 看形式 · HC-002 看逐级前缀</text>
+<rect x="362" y="172" width="374" height="54" rx="12" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.4"/>
+<text x="376" y="190" fill="#141419" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="700">商品编号</text>
+<text x="434.0" y="190" fill="#8f94a4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">hsCode</text>
+<rect x="672.0" y="179" width="54.0" height="16" rx="8.0" fill="#ece7f9"/>
+<text x="678.0" y="190.74" fill="#4B67B4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" font-weight="700">HC-001</text>
+<text x="376" y="214" fill="#141419" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="17" font-weight="700">8471300000</text>
+<line x1="411.0" y1="219" x2="420.0" y2="219" stroke="#b45309" stroke-width="2"/>
+<text x="482" y="214" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">10 位</text>
+<rect x="362" y="238" width="328" height="54" rx="12" fill="#fdf3e9" stroke="#b45309" stroke-width="2"/>
+<text x="376" y="256" fill="#141419" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="700">子目</text>
+<text x="408.0" y="256" fill="#8f94a4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">subheading</text>
+<rect x="626.0" y="245" width="54.0" height="16" rx="8.0" fill="#ece7f9"/>
+<text x="632.0" y="256.74" fill="#b45309" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" font-weight="700">HC-002</text>
+<text x="376" y="280" fill="#b45309" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="17" font-weight="700">847140</text>
+<line x1="411.0" y1="285" x2="420.0" y2="285" stroke="#b45309" stroke-width="2"/>
+<text x="482" y="280" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">前 6 位</text>
+<rect x="362" y="304" width="282" height="54" rx="12" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.4"/>
+<text x="376" y="322" fill="#141419" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="700">品目</text>
+<text x="408.0" y="322" fill="#8f94a4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">heading</text>
+<rect x="580.0" y="311" width="54.0" height="16" rx="8.0" fill="#ece7f9"/>
+<text x="586.0" y="322.74" fill="#4B67B4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" font-weight="700">HC-002</text>
+<text x="376" y="346" fill="#141419" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="17" font-weight="700">8471</text>
+<text x="482" y="346" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">前 4 位</text>
+<rect x="362" y="370" width="236" height="54" rx="12" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.4"/>
+<text x="376" y="388" fill="#141419" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12.5" font-weight="700">章</text>
+<text x="395.0" y="388" fill="#8f94a4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">chapter</text>
+<rect x="534.0" y="377" width="54.0" height="16" rx="8.0" fill="#ece7f9"/>
+<text x="540.0" y="388.74" fill="#4B67B4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" font-weight="700">HC-002</text>
+<text x="376" y="412" fill="#141419" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="17" font-weight="700">84</text>
+<text x="482" y="412" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">前 2 位</text>
+<text x="362" y="438" fill="#b45309" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12" font-weight="700">第 1 行：子目 847140 不是 8471300000 的前缀</text>
+<text x="362" y="458" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">第 5 位起不同（3 vs 4）；只核对前缀关系与位数递增。</text>
+<text x="362" y="478" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">行 2 的 847130 是前缀；位数 2 / 4 / 6 / 10 逐级递增。</text>
+<text x="362" y="498" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">换年度税则只改规则库的 pattern，不改代码。</text>
+<rect x="772" y="112" width="284" height="286" rx="20" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.5" filter="url(#soft)"/>
+<text x="790" y="130" fill="#4B67B4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="14" font-weight="700">issues[]</text>
+<rect x="1002.0" y="126" width="36.0" height="19" rx="9.5" fill="#f5f2fb"/>
+<text x="1010.0" y="139.24" fill="#4B67B4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">4 条</text>
+<text x="790" y="150" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">差异：行号 + 栏名 + 应填</text>
+<text x="790" y="176" fill="#4B67B4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" font-weight="700">HC-002</text>
+<text x="842" y="176" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11.5">第 1 行 · subheading</text>
+<text x="790" y="196" fill="#141419" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12">847140 不是 8471300000 的前缀</text>
+<text x="790" y="226" fill="#4B67B4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" font-weight="700">HC-004</text>
+<text x="842" y="226" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11.5">表头 · tariffVersion</text>
+<text x="790" y="246" fill="#141419" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12">表头缺少 tariffVersion</text>
+<text x="790" y="276" fill="#4B67B4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" font-weight="700">HC-005</text>
+<text x="842" y="276" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11.5">第 2 行 · itemNo</text>
+<text x="790" y="296" fill="#141419" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12">「1」与第 1 行重复</text>
+<text x="790" y="326" fill="#4B67B4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="12" font-weight="700">HC-006</text>
+<text x="842" y="326" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11.5">第 2 行 · description</text>
+<text x="790" y="346" fill="#141419" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12">残留占位符「【」</text>
+<text x="790" y="378" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">found / expected / fix 三项都写</text>
+<text x="1038" y="378" fill="#16a34a" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" text-anchor="end" font-weight="700">结论留给审核人</text>
+<rect x="772" y="414" width="284" height="112" rx="20" fill="#ffffff" stroke="#e6e2ef" stroke-width="1.5" filter="url(#soft)"/>
+<text x="790" y="432" fill="#4d5261" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="14" font-weight="700">skipped[]</text>
+<rect x="1002.0" y="428" width="36.0" height="19" rx="9.5" fill="#f5f2fb"/>
+<text x="1010.0" y="441.24" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">1 条</text>
+<text x="790" y="452" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">未执行：规则 + 原因</text>
+<text x="790" y="472" fill="#141419" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="12">HC-003 · 材料没有「basis」列</text>
+<text x="790" y="490" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">空 issues ≠ 没问题：先读 skipped</text>
+<text x="790" y="508" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">HC-001 已执行、无差异 → 不入任何通道</text>
+<rect x="772" y="538" width="284" height="68" rx="16" fill="#ffffff" stroke="#4B67B4" stroke-width="1.5" filter="url(#soft)"/>
+<text x="790" y="554" fill="#4B67B4" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="13" font-weight="700">buildView() → markdown</text>
+<text x="790" y="574" fill="#4d5261" font-family="'Consolas','SFMono-Regular','Menlo',ui-monospace,monospace" font-size="11">reportJson · summary · counts</text>
+<text x="790" y="592" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">同一次运行的投影；结论不在里面</text>
+<path d="M1056 398 H1068 V560 H1056" fill="none" stroke="#4B67B4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" marker-end="url(#arr)"/>
+<path d="M1056 480 H1068" fill="none" stroke="#4B67B4" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="48" cy="552" r="4" fill="#b45309"/>
+<text x="58" y="548" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">issues[] 有差异</text>
+<circle cx="178" cy="552" r="4" fill="#8f94a4"/>
+<text x="188" y="548" fill="#4d5261" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">skipped[] 未执行</text>
+<text x="44" y="576" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">执行过、无差异的规则不出现在任何通道（如 HC-001）。</text>
+<text x="44" y="596" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">只读材料 · 无网络 · 不调用模型 · 不改原件</text>
+<line x1="44" y1="620" x2="1056" y2="620" stroke="#dcd8ea" stroke-width="1"/>
+<text x="44" y="636" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11">PerryLink DSH plugin family · Apache-2.0 · 配图由 scripts/gen-readme-assets.py 生成</text>
+<text x="1056" y="636" fill="#8f94a4" font-family="'Microsoft YaHei','PingFang SC','Noto Sans CJK SC','Source Han Sans SC',sans-serif" font-size="11" text-anchor="end">规则库即数据：换 yaml 即换规则集</text>
+</svg>
