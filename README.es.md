@@ -43,6 +43,11 @@ dsh plugin --profile <name> add dsh-hs-classify
   <img src="docs/assets/dsh-hs-classify-flow-v5-light.svg" width="100%" alt="Estructura de dsh-hs-classify: la cabecera del registro y dos filas de material a la izquierda; el código de diez dígitos sube por una escalera de prefijos 2 / 4 / 6 / 10, donde la subpartida 847140 se separa del código 8471300000 en el dígito 5; la cabecera y los demás campos de fila marcan la regla que lee cada uno; a la derecha, dos canales — issues[] (4 diferencias) y skipped[] (1 no ejecutada) — confluyen en la proyección markdown / reportJson de buildView(), con la conclusión en el revisor">
 </picture>
 
+![dsh-hs-classify: ejecución real de terminal](docs/assets/dsh-hs-classify-demo.gif)
+
+*Repetición animada de una ejecución real registrada en este repositorio.*
+
+
 ## Instalación en tres pasos
 
 1. **Instala** (elige un canal):

@@ -43,6 +43,11 @@ dsh plugin --profile <name> add dsh-hs-classify
   <img src="docs/assets/dsh-hs-classify-flow-v5-light.svg" width="100%" alt="dsh-hs-classify structure: the register header and two material rows sit on the left; the ten-digit commodity code climbs a 2 / 4 / 6 / 10 prefix staircase, where subheading 847140 diverges from code 8471300000 at digit 5; the header and the other row fields mark the rule that reads each; on the right, two channels — issues[] (4 differences) and skipped[] (1 not run) — merge into buildView()'s markdown / reportJson projection, with the verdict left to the reviewer">
 </picture>
 
+![dsh-hs-classify: real terminal run](docs/assets/dsh-hs-classify-demo.gif)
+
+*Animated replay of a real run recorded in this repository.*
+
+
 ## Three-step setup
 
 1. **Install** (pick one channel):
