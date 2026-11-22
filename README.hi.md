@@ -11,6 +11,8 @@
 
 कस्टम्स घोषणाकर्ताओं और वर्गीकरणकर्ताओं के लिए DeepSeek Harness प्लगइन: यह केवल कोड और स्तरों की संरचनात्मक संगति जाँचता है — मूल नहीं बदलता, टैरिफ़ नहीं देखता और वर्गीकरण पर कोई निर्णय नहीं देता।
 
+अंतिम सत्यापन: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [इंस्टॉल](#तीन-चरणों-में-शुरुआत) · [कॉन्फ़िगरेशन](#कॉन्फ़िगरेशन) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -46,7 +48,6 @@ dsh plugin --profile <name> add dsh-hs-classify
 ![dsh-hs-classify का असली टर्मिनल रन](docs/assets/dsh-hs-classify-demo.gif)
 
 *इस रिपॉज़िटरी में दर्ज असली रन का एनिमेटेड रीप्ले।*
-
 
 ## तीन चरणों में शुरुआत
 

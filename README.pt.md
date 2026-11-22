@@ -11,6 +11,8 @@
 
 Um verificador de DeepSeek Harness para declarantes e classificadores aduaneiros: verifica apenas a coerência estrutural dos códigos e dos níveis — não altera o original, não consulta a pauta e não emite um parecer de classificação.
 
+Última verificação: DeepSeek Harness `dsh-v0.2.3-alpha.1` (2026-11-22).
+
 [Instalar](#instalação-em-três-passos) · [Configuração](#configuração) · [FAQ](#faq) · [简体中文](README.md) · [English](README.en.md) · [Español](README.es.md) · [Português](README.pt.md) · [हिन्दी](README.hi.md)
 
 [![License](https://img.shields.io/badge/license-Apache--2.0-3366CC?style=flat-square&labelColor=2B3245)](LICENSE)
@@ -46,7 +48,6 @@ dsh plugin --profile <name> add dsh-hs-classify
 ![dsh-hs-classify: execução real de terminal](docs/assets/dsh-hs-classify-demo.gif)
 
 *Repetição animada de uma execução real registrada neste repositório.*
-
 
 ## Instalação em três passos
 
