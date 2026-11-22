@@ -7,6 +7,8 @@
 
 # dsh-hs-classify
 
+Current version `0.2.15`.
+
 **Check a whole commodity-classification register: which row, which column, what differs — one line at a time.**
 
 A DeepSeek Harness checker for customs declarants and classifiers: it checks the self-consistency of codes and levels only — no edits, no tariff lookup, no classification verdict.
